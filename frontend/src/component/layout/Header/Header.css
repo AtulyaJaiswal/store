@@ -1,0 +1,40 @@
+.speedDial {
+    position: fixed;
+    right: 3vmax;
+    top: 3vmax;
+  }
+  
+  .speedDialIcon {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+  }
+
+.navbar{
+  display: flex;
+  background-color: tomato;
+  color: white;
+  justify-content: space-between;
+  padding: 0.8rem 4rem;
+}
+.links{
+  display: flex;
+  justify-content: space-around;
+}
+.links > a{
+  font: 300 1rem "Roboto";
+  color: white;
+  margin: 0 3rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.search > a{
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font: 800 1rem "Roboto";
+}
+.profile > a > svg{
+  color: white;
+  font-size: 1.rem;
+}
