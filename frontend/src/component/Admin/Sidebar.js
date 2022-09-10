@@ -16,7 +16,8 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <Link to="/">
-        <img src={""} alt="Ecommerce" />
+        <img src="https://i0.wp.com/therumzzline.com/wp-content/uploads/2021/03/Ecommerce-site-logo-Online-Shopping-N-Shop-Logo-copy.jpg?resize=1400%2C700&ssl=1" 
+        alt="Ecommerce" />
       </Link>
       <Link to="/admin/dashboard">
         <p>

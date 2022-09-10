@@ -17,6 +17,12 @@
   justify-content: space-between;
   padding: 0.8rem 4rem;
 }
+.logo > img{
+  height: 1.5rem;
+  width: 5rem;
+  width: max-content;
+  border-radius: 100rem;
+}
 .links{
   display: flex;
   justify-content: space-around;
