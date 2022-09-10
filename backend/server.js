@@ -14,10 +14,10 @@ process.on("uncaughtException", (err) => {
 //THIS IS A UNCAUGHT EXCEPTION
 
 //CONFIG
-// if(process.env.NODE_ENV !== "PRODUCTION"){
-//     require("dotenv").config({path: "backend/config/config.env"});
-// }
-dotenv.config({path: "config/config.env"});
+if(process.env.NODE_ENV !== "PRODUCTION"){
+    require("dotenv").config({path: "backend/config/config.env"});
+}
+// dotenv.config({path: "config/config.env"});
 
 //CONNECT DATABASE
 connectDatabase();
