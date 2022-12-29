@@ -12,6 +12,7 @@ exports.isAuthenticatedUser = catchAsyncErrors( async(req,res,next) => {
     }
 
     const decodeData = jwt.verify(token, process.env.JWT_SECRET);
+    
 
     req.user = await User.findById(decodeData.id);
     //req.user me store ho gya data, ab jab tak login rhega tb tk user ka data hum yha se le skte
