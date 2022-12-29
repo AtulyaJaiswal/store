@@ -18,30 +18,22 @@ const About = () => {
           <div>
             <Avatar
               style={{ width: "10vmax", height: "10vmax", margin: "2vmax 0" }}
-              src="https://res.cloudinary.com/tripleayt/image/upload/v1631555947/products/jpyibarlaxawvcvqjv5b.png"
+              src="https://i0.wp.com/therumzzline.com/wp-content/uploads/2021/03/Ecommerce-site-logo-Online-Shopping-N-Shop-Logo-copy.jpg?resize=1400%2C700&ssl=1"
               alt="Founder"
             />
-            <Typography>Abhishek Singh</Typography>
+            <Typography>Atulya Jaiswal</Typography>
             <Button onClick={visitInstagram} color="primary">
-              Visit Instagram
+              Visit Instagram   <InstagramIcon/>
             </Button>
-            <span>
-              This is a sample wesbite made by @meabhisingh. Only with the
-              purpose to teach MERN Stack on the channel 6 Pack Programmer
-            </span>
           </div>
           <div className="aboutSectionContainer2">
             <Typography component="h2">Our Brands</Typography>
-            <a
-              href="https://www.youtube.com/channel/UCO7afj9AUo0zV69pqEYhcjw"
-              target="blank"
-            >
-              <YouTubeIcon className="youtubeSvgIcon" />
-            </a>
+            <span>
+              This is a sample website made by a 3rd year student. This is only to showcase MERN stack build.
+              Learned a lot on way of building.
+            </span>
 
-            <a href="https://instagram.com/meabhisingh" target="blank">
-              <InstagramIcon className="instagramSvgIcon" />
-            </a>
+
           </div>
         </div>
       </div>

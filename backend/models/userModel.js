@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:[true, "Please enter your password"],
         minLength:[8,"Password should have more than 8 characters"],
-        select:false, //jb find method se data mangainge to ye nii aaiag
+        select:false, //jb find method se data mangainge to ye nii aaiga
     },
     avatar:{
         public_id:{
@@ -62,7 +62,6 @@ userSchema.methods.getJWTToken = function(){
 };
 
 //COMPARE PASSWORD
-//galat password par bhi shi de raa filhaal
 userSchema.methods.comparePassword = async function(enteredPassword){
     return await bcrypt.compare(enteredPassword, this.password);
 };

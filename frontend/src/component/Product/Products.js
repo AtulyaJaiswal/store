@@ -21,7 +21,7 @@ const categories = [
   "SmartPhones",
 ];
 
-const Products = ({ match }) => {
+const Products = () => {
 
   const { keyW } = useParams();
   const dispatch = useDispatch();
