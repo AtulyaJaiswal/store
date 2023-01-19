@@ -50,27 +50,39 @@ exports.getAllProducts = catchAsyncErrors(async (req,res) =>{
     const productsCount = await Product.countDocuments();
     
     const apiFeature = new ApiFeatures(Product.find(), req.query)
-    .search()
-    .filter()
-    .pagination(resultPerPage);
+        .search()
+        .filter();
+    // .pagination(resultPerPage);
     //  yha se hta rhe as filter hone ke baad fir no of products le rhe taaki pagination waala maintain kar sake
     //req.query user se jo keyword milega vo laakr de dega
     //req.query.keyword hota but .keyword hum dusri jagah se access kr lenge
 
-    // let products = await apiFeature.query;
+    // const apiFeature = new ApiFeatures(Product.find(), req.query)
+    // .search()
+    // .filter();
+    apiFeature.pagination(resultPerPage);
 
-    // let filteredProductsCount = products.length;
+    const pages = Math.ceil(productsCount / resultPerPage);
+
+    let products = await apiFeature.query;
+    // console.log(products);
+
+    let filteredProductsCount = products.length;
 
     // apiFeature.pagination(resultPerPage);
+    // console.log("OK")
 
-    const products = await apiFeature.query; //same class return kiye udhar isliye uske function mil gye saare
+    // products = await apiFeature.query;
+    // console.log(products);
+
+    // const products = await apiFeature.query; //same class return kiye udhar isliye uske function mil gye saare
     // console.log(products);
     res.status(200).json({
         success: true,
         products,
         productsCount,
         resultPerPage,
-        // filteredProductsCount,
+        pages,
     });
 });
 
