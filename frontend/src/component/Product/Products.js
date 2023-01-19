@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getProduct } from "../../actions/productAction";
 import Loader from "../layout/Loader/Loader";
 import ProductCard from "../Home/ProductCard";
-import Pagination from "react-js-pagination";
+import Pagination from "../Pagination/Pagination";
 import Slider from "@mui/material/Slider";
 import { toast } from "react-toastify";
 import Typography from "@mui/material/Typography";
@@ -23,13 +23,11 @@ const categories = [
 
 const Products = () => {
 
-  const { keyW } = useParams();
+  const { keyW, page:pageNum } = useParams();
   const dispatch = useDispatch();
 
-  const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
-
   const [ratings, setRatings] = useState(0);
 
   const {
@@ -38,19 +36,27 @@ const Products = () => {
     error,
     productsCount,
     resultPerPage,
-    filteredProductsCount,
+    pages: totalPages,
   } = useSelector((state) => state.products);
+
+  const pageNumber = pageNum || 1;
+  const [page, setPage] = useState(pageNumber);
+  const [pages, setPages] = useState(totalPages);
+
+  // console.log(totalPages);
+  // console.log(resultPerPage);
+  // console.log(productsCount);
 
   const keyword = keyW;
 
-  const setCurrentPageNo = (e) => {
-    setCurrentPage(e);
-  };
+  // const setCurrentPageNo = (e) => {
+  //   setCurrentPage(e);
+  // };
 
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
   };
-  let count = filteredProductsCount;
+  // let count = pages;
 
   useEffect(() => {
     if (error) {
@@ -58,8 +64,10 @@ const Products = () => {
       dispatch(clearErrors());
     }
 
-    dispatch(getProduct(keyword, currentPage, price, category, ratings));
-  }, [dispatch, keyword, currentPage, price, category, ratings, toast, error]);
+    // setPages(totalPages);
+
+    dispatch(getProduct(keyword, page, price, category, ratings));
+  }, [dispatch, keyword, page, price, category, ratings, error]);
 
   return (
     <Fragment>
@@ -115,24 +123,15 @@ const Products = () => {
               />
             </fieldset>
           </div>
-          {resultPerPage < count && (
+          {/* {resultPerPage < count && ( */}
             <div className="paginationBox">
-              <Pagination
-                activePage={currentPage}
-                itemsCountPerPage={resultPerPage}
-                totalItemsCount={productsCount}
-                onChange={setCurrentPageNo}
-                nextPageText="Next"
-                prevPageText="Prev"
-                firstPageText="1st"
-                lastPageText="Last"
-                itemClass="page-item"
-                linkClass="page-link"
-                activeClass="pageItemActive"
-                activeLinkClass="pageLinkActive"
+              <Pagination 
+                page={page} 
+                pages={pages} 
+                changePage={setPage} 
               />
             </div>
-          )}
+          {/* )} */}
         </Fragment>
       )}
     </Fragment>
